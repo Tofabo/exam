@@ -1,0 +1,56 @@
+body{
+    background-color: #29F502;
+    padding: 0px;
+    margin: 0px;
+}
+
+label{
+    vertical-align: top;
+}
+
+table{
+    border-collapse: collapse;
+    margin: 20px;
+    background-color: yellow;
+}
+
+th,td{
+    border: 1px solid black;
+    padding: 5px;
+}
+
+th{
+    background-color: lightgrey;
+}
+
+.left{
+    width: 200px;
+    display: inline-block;
+}
+
+.right{
+    width: 200px;
+    display: inline-block;
+}
+
+.inline{
+    display: inline-block;
+}
+
+.header{
+    background-color: hotpink;
+    margin: 0px;
+}
+
+a{
+    text-decoration: none;
+    color:purple;
+}
+
+a:hover{
+    color: red;
+}
+
+.red{
+    color:red;
+}

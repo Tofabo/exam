@@ -1,0 +1,17 @@
+.left{
+    width: 300px;
+    display: inline-block;
+}
+
+.right{
+    width: 200px;
+    display: inline-block;
+}
+
+input{
+    margin: 5px 0px;
+}
+
+.red{
+    color: red;
+}

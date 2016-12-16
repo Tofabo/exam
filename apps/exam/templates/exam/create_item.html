@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'exam/css/style.css' %}">
+        <title>New Item</title>
+    </head>
+    <body>
+        <div class="header">
+            <h3 class="inline">Create a new wish for an item you'll never get</h3>
+            <a href="{% url 'exam:dashboard' %}" class="inline">Dashboard</a>
+            <a href="{% url 'exam:logout' %}" class="inline">Logout</a>
+        </div>
+        <form action="{% url 'exam:create' %}" method="post">
+            {% csrf_token %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="red">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <label for="">Item/Product: </label><input type="text" name="item">
+            <input type="submit">
+        </form>
+    </body>
+</html>

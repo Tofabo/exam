@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'exam/css/style.css' %}">
+        <title>Item</title>
+    </head>
+    <body>
+        <div class="header">
+            <h3 class="inline">Item</h3>
+            <a href="{% url 'exam:dashboard' %}" class="inline">Home</a>
+            <a href="{% url 'exam:logout' %}" class="inline">Logout</a>
+        </div>
+        <h4>{{ item.name }}</h4>
+        <p>Users who added this product to their wish list:</p>
+        {% for user in users %}
+            <p>{{ user.first_name }}</p>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'login\css\style.css' %}">
+        <title>Success!</title>
+    </head>
+    <body>
+        <div id="wrapper">
+            <!-- Get access to variables here!! -->
+            <h4>Welcome {{ users.first_name}}!</h4>
+            <p>You have logged in in successfully!</p>
+            <!-- shoudl I make this a fancy variable that says registered or loggedin? -->
+            <form action="/logout">
+                <input type="submit" value="Logout">
+            </form>
+
+                <p>{{ user.first_name }}</p>
+                <p>{{ user.last_name }}</p>
+                <p>{{ user.email }}</p>
+                <p>{{ user.password }}</p>
+        
+        </div>
+    </body>
+</html>

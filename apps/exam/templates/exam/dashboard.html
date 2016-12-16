@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'exam/css/style.css' %}">
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <div class="header">
+        <h3 class="inline">DASHBOARD</h3>
+        <h2 class="inline">Welcome {{ user.first_name}}!</h2>
+        <a href="{% url 'exam:new_item' %}" class="inline">Add Item</a>
+        <a href="{% url 'exam:logout' %}" class="inline">Logout</a>
+        </div>
+        <p>Your wishlist:</p>
+        <table>
+            <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Added By</th>
+                  <th>Date Added</th>
+                  <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in user_items %}
+             <!-- <p> {{item.user.all}}<p> {{ item.user.0 }}
+                 {% for user in item.user.all %}
+                 <p>{{ user.id }}</p>
+                 {% endfor %} -->
+                <tr>
+                  <td><a href="{% url 'exam:item' id=item.id %}">{{ item.name }}</a></td>
+                  <td>{{ item.added_by_name }}</td>
+                  <td>{{ item.created_at }}</td>
+                  {% if request.session.id == item.added_by_id %}
+                  <td><a href="{% url 'exam:delete' id=item.id %}">Delete</a></td>
+                  {% else %}
+                   <td><a href="{% url 'exam:remove' id=item.id %}">Remove from my wish list</a></td>
+                  {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <p>Other User's wishlist:</p>
+        <table>
+            <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Added By</th>
+                  <th>Date Added</th>
+                  <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in other_items %}
+                <tr>
+                  <td><a href="{% url 'exam:item' id=item.id %}">{{ item.name }}</a></td>
+                  <td>{{ item.added_by_name}}</td>
+                  <td>{{ item.created_at }}</td>
+                  <td><a href="{% url 'exam:add' id=item.id %}">Add to my wishlist</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

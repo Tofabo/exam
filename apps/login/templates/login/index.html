@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'exam\css\style.css' %}">
+        <title>Login and Registration</title>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="header">
+                <h3 class="inline">Register here!</h3>
+            </div>
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="red">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
+            <form action="{%  url 'login:register' %}" method="post">
+                {% csrf_token %}
+                <label for="" class="left"> First name (at least 3 characters): </label><input type="text" name="first_name" class="right" value="{{request.session.first_name}}">
+                <br>
+                <label for="" class="left"> Last name (at least 3 characters): </label><input type="text" name="last_name" class="right" value="{{request.session.last_name}}">
+                <br>
+                <label for="" class="left"> Username (at least 3 characters): </label><input type="text" name="username" class="right" value="{{request.session.username}}">
+                <br>
+                <label for="" class="left">Email: </label><input type="text" name="email" class="right" value="{{request.session.email}}">
+                <br>
+                <label for="" class="left">Password (at least 8 characters): </label><input type="password" name="password" class="right">
+                <br>
+                <label for="" class="left"> Confirm password: </label><input type="password" name="password_confirmation" class="right">
+                <br>
+                <label for="" class="left"> Date hired???????: </label><input type="datetime-local" name="date" class="right" value="{{placement.date|date:"Y-m-d" }}">
+                <input type="submit">
+            </form>
+            <div class="header">
+                <h3>Already have an account? Login here!</h3>
+            </div>
+            <form action="{% url 'login:login' %}" method="post">
+                {% csrf_token %}
+                <label for="" class="left">Email: </label><input type="text" name="email" class="right">
+                <label for="" class="left"> Password: </label><input type="password" name="password" class="right">
+                <input type="submit">
+            </form>
+        </div>
+    </body>
+</html>
